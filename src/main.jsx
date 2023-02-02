@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Addstudents from './components/Addstudents';
+import ManageStudents from './components/ManageStudents';
 
 const router = createBrowserRouter([
   {
@@ -17,10 +18,10 @@ const router = createBrowserRouter([
     path: "/addstudents",
     element: <Addstudents></Addstudents>,
   },
-  // {
-  //   path: "/managestudents",
-  //   element: <App></App>,
-  // },
+  {
+    path: "/managestudents",
+    element: <ManageStudents></ManageStudents>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
