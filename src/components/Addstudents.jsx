@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
+import swal from 'sweetalert';
 
 const Addstudents = () => {
     const handleForm = (event) => {
@@ -9,16 +10,34 @@ const Addstudents = () => {
         const fname = form.fName.value;
         const mname = form.mName.value;
         const lname = form.lName.value;
+        const selectClasses = form.selectClasses.value;
+        const selectDivisions = form.selectDivisions.value;
         const rollNumber = form.rollNumber.value;
         const adress1 = form.adressLine1.value;
         const adress2 = form.adressLine2.value;
         const landmark = form.landmark.value;
         const city = form.city.value;
         const pinCode = form.pinCode.value;
-        const selectClasses = form.selectClasses.value;
-        const selectDivisions = form.selectDivisions.value;
 
-        console.log(fname, lname, mname,rollNumber, adress1, adress2, landmark, city, pinCode, selectClasses, selectDivisions);
+
+        const info = {fname, lname, mname,rollNumber, adress1, adress2, landmark, city, pinCode, selectClasses, selectDivisions}
+        // sending data to backend
+        fetch('http://localhost:5000/addDetails', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(info)
+        })
+            .then((res) => res.json())
+            .then(data => {
+                swal("Good job!", "Student details Successfully added!", "success");
+                // navigate('/');
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            })
+        // console.log(fname, lname, mname,rollNumber, adress1, adress2, landmark, city, pinCode, selectClasses, selectDivisions);
         form.reset();
     }
 

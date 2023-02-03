@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 // import { GrView } from 'react-icons/fa';
 import { AiOutlineEye } from "react-icons/ai";
@@ -6,6 +6,14 @@ import { AiFillEdit } from "react-icons/ai";
 import { AiOutlineRest } from "react-icons/ai";
 
 const ManageStudents = () => {
+    // console.log(oneStudentInfo)
+    const [info, setInfo] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/manageStudents')
+            .then(res => res.json())
+            .then(data => setInfo(data))
+    }, [])
+    console.log(info)
     return (
         <div>
             <Navbar></Navbar>
@@ -22,9 +30,11 @@ const ManageStudents = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Cy Ganderton</td>
-                                <td>Quality Control Specialist</td>
-                                <td>Blue</td>
+                                <td>{info[0]?.fname} {info[0]?.mname} {info[0]?.lname}</td>
+                                <td>{info[0]?.selectClasses
+                                }</td>
+                                <td>{info[0]?.rollNumber
+                                }</td>
                                 <div className='flex'>
                                     <div>
                                         <td><AiOutlineEye></AiOutlineEye></td>
@@ -37,7 +47,7 @@ const ManageStudents = () => {
                                     </div>
                                 </div>
                             </tr>
-                            <tr>
+                            {/* <tr>
                                 <td>Hart Hagerty</td>
                                 <td>Desktop Support Technician</td>
                                 <td>Purple</td>
@@ -68,7 +78,7 @@ const ManageStudents = () => {
                                         <td> <AiOutlineRest></AiOutlineRest></td>
                                     </div>
                                 </div>
-                            </tr>
+                            </tr> */}
                         </tbody>
                     </table>
                 </div>
