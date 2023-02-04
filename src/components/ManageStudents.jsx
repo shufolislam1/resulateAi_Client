@@ -6,14 +6,13 @@ import { AiFillEdit } from "react-icons/ai";
 import { AiOutlineRest } from "react-icons/ai";
 
 const ManageStudents = () => {
-    // console.log(oneStudentInfo)
+    // fetch data from database
     const [info, setInfo] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/manageStudents')
             .then(res => res.json())
             .then(data => setInfo(data))
     }, [])
-    console.log(info)
     return (
         <div>
             <Navbar></Navbar>
@@ -30,10 +29,33 @@ const ManageStudents = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{info[0]?.fname} {info[0]?.mname} {info[0]?.lname}</td>
-                                <td>{info[0]?.selectClasses
+
+                                <td>                                {
+                                    info.map((info, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <td> {info.fname}</td>
+                                            </div>
+                                        )
+                                    })
                                 }</td>
-                                <td>{info[0]?.rollNumber
+                                <td>                                {
+                                    info.map((info, index) => {
+                                        return(
+                                        <div key={index}>
+                                            <td>{info.selectClasses}</td>
+                                        </div>
+                                        )
+                                    })
+                                }</td>
+                                <td>                                {
+                                    info.map((info, index) => {
+                                        return(
+                                        <div key={index}>
+                                            <td> {info.rollNumber}</td>
+                                        </div>
+                                        )
+                                    })
                                 }</td>
                                 <div className='flex'>
                                     <div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import LoadDataFromDatabase from './LoadDataFromDatabase';
 
 const Navbar = () => {
     return (
@@ -33,7 +32,6 @@ const Navbar = () => {
                         <span class="relative">Login</span>
                     </a>
                 </div>
-                <LoadDataFromDatabase></LoadDataFromDatabase>
             </div>
         </div>
     );
