@@ -29,7 +29,6 @@ const ManageStudents = () => {
                         </thead>
                         <tbody>
                             <tr>
-
                                 <td>                                {
                                     info.map((info, index) => {
                                         return (
@@ -41,33 +40,44 @@ const ManageStudents = () => {
                                 }</td>
                                 <td>                                {
                                     info.map((info, index) => {
-                                        return(
-                                        <div key={index}>
-                                            <td>{info.selectClasses}</td>
-                                        </div>
+                                        return (
+                                            <div key={index}>
+                                                <td>{info.selectClasses}</td>
+                                            </div>
                                         )
                                     })
                                 }</td>
                                 <td>                                {
                                     info.map((info, index) => {
-                                        return(
-                                        <div key={index}>
-                                            <td> {info.rollNumber}</td>
-                                        </div>
+                                        return (
+                                            <div key={index}>
+                                                <td> {info.rollNumber}</td>
+                                            </div>
                                         )
                                     })
                                 }</td>
-                                <div className='flex'>
-                                    <div>
-                                        <td><AiOutlineEye></AiOutlineEye></td>
-                                    </div>
-                                    <div>
-                                        <td><AiFillEdit></AiFillEdit></td>
-                                    </div>
-                                    <div>
-                                        <td> <AiOutlineRest></AiOutlineRest></td>
-                                    </div>
-                                </div>
+                                <td>
+                                    {
+                                        info.map((info, index) => {
+                                            return (
+                                                <div key={index}>
+                                                    <div className='flex'>
+                                                        <div>
+                                                            <td><AiOutlineEye></AiOutlineEye></td>
+                                                        </div>
+                                                        <div>
+                                                            <td><AiFillEdit></AiFillEdit></td>
+                                                        </div>
+                                                        <div>
+                                                            <td> <AiOutlineRest></AiOutlineRest></td>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+
+                                </td>
                             </tr>
                             {/* <tr>
                                 <td>Hart Hagerty</td>
